@@ -606,12 +606,14 @@ Here's an example of 1 event:
   }
 }
 ```
+
 Please note this data is pre-filtered using the same filters described under the raw brainwaves parameter: notch and bandpass. Therefore, PowerByBand alpha usable range is 2Hz to 4Hz, and the gamma functional range is 30Hz to 45Hz.
 
---- 
+
+
 4. **Expected Format for RNN**: RNN models typically expect data in a 3D array format, where the dimensions represent `[samples, timesteps, features]`.
 
-#### Data Collection and Formatting for RNN Models
+***Data Collection and Formatting for RNN Models***
 
 This section provides a Node.js script that subscribes to the `powerByBand` brainwaves from the Neurosity SDK, formats the data into a 3D array suitable for RNN, and saves it to disk.
 
@@ -658,25 +660,6 @@ neurosity.brainwaves("powerByBand").subscribe((brainwaves) => {
 
 This script will save the data to disk every time it collects 100 samples. The data will be saved in a format that TensorFlow.js can read back later.
 
----
-
-### Data Conversion Example
-
-Here's a simplified example in JavaScript to convert raw EEG data to the expected RNN format:
-
-```javascript
-const tf = require('@tensorflow/tfjs-node');
-
-// Sample raw EEG data from Neurosity SDK
-const raw_data = [...]  // Replace with actual data
-
-// Convert to 3D array format for RNN
-const samples = raw_data.length;
-const timesteps = 1;  // Single timestep for each sample
-const features = raw_data[0].length;  // Number of features in each sample
-
-const rnn_input = tf.tensor3d(raw_data, [samples, timesteps, features]);
-```
 ---
 
 ## Hyperparameter Tuning in Node.js
