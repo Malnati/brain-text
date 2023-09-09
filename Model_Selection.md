@@ -1,5 +1,3 @@
----
-
 # Model Selection for Brain-Text Transcription
 
 ## Table of Contents
@@ -63,5 +61,3 @@ Given the complexity and uniqueness of brain wave data, experimentation with dif
 
 - **TensorBoard**: For quick monitoring.
 - **Jupyter Notebooks**: For rapid data analysis.
-
----
