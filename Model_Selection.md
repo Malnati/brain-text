@@ -61,3 +61,31 @@ Given the complexity and uniqueness of brain wave data, experimentation with dif
 
 - **TensorBoard**: For quick monitoring.
 - **Jupyter Notebooks**: For rapid data analysis.
+  
+---
+
+## Data Preparation for RNN Models
+
+### Steps for Data Preparation
+
+1. **Sample Data**: Obtain sample EEG data that aligns with the Neurosity SDK's concepts of Predictions.
+2. **Data Conversion Script**: Create a script to convert the Neurosity SDK's data format, which includes metrics like `raw`, `rawUnfiltered`, `psd`, and `powerByBand`.
+3. **Expected Format for RNN**: RNN models typically expect data in a 3D array format, where the dimensions represent `[samples, timesteps, features]`.
+
+### Data Conversion Example
+
+Here's a simplified example in JavaScript to convert raw EEG data to the expected RNN format:
+
+```javascript
+const tf = require('@tensorflow/tfjs-node');
+
+// Sample raw EEG data from Neurosity SDK
+const raw_data = [...]  // Replace with actual data
+
+// Convert to 3D array format for RNN
+const samples = raw_data.length;
+const timesteps = 1;  // Single timestep for each sample
+const features = raw_data[0].length;  // Number of features in each sample
+
+const rnn_input = tf.tensor3d(raw_data, [samples, timesteps, features]);
+```
