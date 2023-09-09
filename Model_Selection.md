@@ -608,7 +608,59 @@ Here's an example of 1 event:
 ```
 Please note this data is pre-filtered using the same filters described under the raw brainwaves parameter: notch and bandpass. Therefore, PowerByBand alpha usable range is 2Hz to 4Hz, and the gamma functional range is 30Hz to 45Hz.
 
+--- 
 4. **Expected Format for RNN**: RNN models typically expect data in a 3D array format, where the dimensions represent `[samples, timesteps, features]`.
+
+---
+
+## Data Collection and Formatting for RNN Models
+
+This section provides a Node.js script that subscribes to the `powerByBand` brainwaves from the Neurosity SDK, formats the data into a 3D array suitable for RNN, and saves it to disk.
+
+```javascript
+const Neurosity = require("neurosity");
+const fs = require("fs");
+const tf = require("@tensorflow/tfjs-node");
+
+const neurosity = new Neurosity();
+
+let allData = [];
+
+neurosity.brainwaves("powerByBand").subscribe((brainwaves) => {
+  // Flatten the data object into an array
+  const flatData = [
+    ...brainwaves.data.alpha,
+    ...brainwaves.data.beta,
+    ...brainwaves.data.delta,
+    ...brainwaves.data.gamma,
+    ...brainwaves.data.theta,
+  ];
+
+  allData.push(flatData);
+
+  // Save every 100 samples
+  if (allData.length >= 100) {
+    const samples = allData.length;
+    const timesteps = 1; // Single timestep for each sample
+    const features = flatData.length; // Number of features in each sample
+
+    const rnnInput = tf.tensor3d(allData, [samples, timesteps, features]);
+
+    // Save tensor to disk
+    const savePath = "file://./savedData";
+    rnnInput.save(savePath).then(() => {
+      console.log(`Data saved to ${savePath}`);
+    });
+
+    // Clear allData for next batch
+    allData = [];
+  }
+});
+```
+
+This script will save the data to disk every time it collects 100 samples. The data will be saved in a format that TensorFlow.js can read back later.
+
+---
 
 ### Data Conversion Example
 
