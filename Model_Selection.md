@@ -196,6 +196,19 @@ Bandpass with cutoff between 2Hz and 45Hz.
 The order of these filters is set to 2, and the characteristic used is butterworth.
 
 To apply your own filters, you can use the rawUnfiltered brainwaves parameter (see next section) and use the Neurosity Pipes library for fine-grained customization.
+***Raw Unfiltered***
+
+The unfiltered raw data follows the same shape as the raw data option, just without signal filters applied. This data comes directly from the analog to digital converter, and does not include any processing. We only recommend using the unfiltered data for advanced scenarios.
+
+Note that unfiltered raw data will include environmental noise in the signal, as well as DC drift, which is expected when working with EEG. To filter out the noise, you can use the raw option described earlier on this page, or you can apply your own custom filters (like notch and bass pass) on the client side by using the Neurosity Pipes library.
+```javascript
+const neurosity = new Neurosity();
+
+neurosity.brainwaves("rawUnfiltered").subscribe((brainwaves) => {
+  console.log(brainwaves);
+});
+```
+The code above will output new epochs of 16 samples approximately every 62.5ms (see the data property).. Here's an example of 1 event:
 4. **Expected Format for RNN**: RNN models typically expect data in a 3D array format, where the dimensions represent `[samples, timesteps, features]`.
 
 ### Data Conversion Example
