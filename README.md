@@ -41,6 +41,7 @@ This repository contains a project aimed at transcribing brain waves into text. 
 ## Additional Documentation
 - [Approach to Brain-Text Transcription](Approach.md)
 - [Neurosity SDK Metrics Overview](Metrics.md)
+- [Utility of OpenAPI in the Project](OpenAPI_Utility.md)
 
 ---
 
