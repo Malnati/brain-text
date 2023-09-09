@@ -47,6 +47,7 @@ This repository contains a project aimed at transcribing brain waves into text. 
 - [Gesture Recognition Capabilities and Limitations](Gesture_Recognition_Limitations.md)
 - [Software Stack for Machine Learning](Software_Stack_for_ML.md)
 - [TensorFlow.js Capabilities Relevant to this Project](TensorFlow_JS_Capabilities.md)
+- [Model Selection for Brain-Text Transcription](Model_Selection.md)
 
 ---
 
