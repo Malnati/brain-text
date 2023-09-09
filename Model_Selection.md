@@ -607,6 +607,7 @@ Here's an example of 1 event:
 }
 ```
 Please note this data is pre-filtered using the same filters described under the raw brainwaves parameter: notch and bandpass. Therefore, PowerByBand alpha usable range is 2Hz to 4Hz, and the gamma functional range is 30Hz to 45Hz.
+
 4. **Expected Format for RNN**: RNN models typically expect data in a 3D array format, where the dimensions represent `[samples, timesteps, features]`.
 
 ### Data Conversion Example
