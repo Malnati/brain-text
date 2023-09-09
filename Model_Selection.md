@@ -89,3 +89,54 @@ const features = raw_data[0].length;  // Number of features in each sample
 
 const rnn_input = tf.tensor3d(raw_data, [samples, timesteps, features]);
 ```
+---
+
+## Hyperparameter Tuning in Node.js
+
+### Techniques for Hyperparameter Tuning
+
+1. **Grid Search**: Systematically work through multiple combinations of parameter tunes, cross-validate as you go to determine which tune gives the best performance.
+2. **Random Search**: Randomly sample the search space and perform K-Fold CV (Cross-Validation), typically faster and can yield high-performing models.
+
+### Grid Search Example
+
+Here's a simplified example in JavaScript using TensorFlow.js:
+
+```javascript
+const tf = require('@tensorflow/tfjs-node');
+
+// Define the parameter grid
+const learningRates = [0.01, 0.001];
+const batchSizes = [32, 64];
+
+// Loop through the parameter grid
+for (const lr of learningRates) {
+  for (const batch of batchSizes) {
+    const model = tf.sequential();
+    // ... (define your model architecture here)
+    
+    const optimizer = tf.train.adam(lr);
+    model.compile({ optimizer, loss: 'meanSquaredError', metrics: ['accuracy'] });
+    
+    // Train the model
+    const history = await model.fit(trainData, trainLabels, {
+      epochs: 10,
+      batch,
+      validationData: [valData, valLabels]
+    });
+    
+    console.log(`Learning Rate: ${lr}, Batch Size: ${batch}, Validation Accuracy: ${history.history.val_acc}`);
+  }
+}
+```
+
+### Random Search Example
+
+Random search can be implemented similarly, but you would randomly sample from your hyperparameter space instead of iterating through a predefined list.
+
+```javascript
+const randomLearningRate = Math.random() * 0.01;  // Randomly sample learning rate
+const randomBatchSize = [32, 64][Math.floor(Math.random() * 2)];  // Randomly sample batch size
+```
+
+---
