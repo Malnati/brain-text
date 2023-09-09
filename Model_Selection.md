@@ -611,9 +611,7 @@ Please note this data is pre-filtered using the same filters described under the
 --- 
 4. **Expected Format for RNN**: RNN models typically expect data in a 3D array format, where the dimensions represent `[samples, timesteps, features]`.
 
----
-
-## Data Collection and Formatting for RNN Models
+#### Data Collection and Formatting for RNN Models
 
 This section provides a Node.js script that subscribes to the `powerByBand` brainwaves from the Neurosity SDK, formats the data into a 3D array suitable for RNN, and saves it to disk.
 
