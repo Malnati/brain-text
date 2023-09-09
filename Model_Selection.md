@@ -1,5 +1,7 @@
 # Model Selection for Brain-Text Transcription
 
+---
+
 ## Table of Contents
 
 1. [Recommended Models: RNN or LSTM](#recommended-models-rnn-or-lstm)
@@ -10,6 +12,15 @@
 3. [Fast-Track Experimentation Plan](#fast-track-experimentation-plan)
    - [Steps for Quick Implementation](#steps-for-quick-implementation)
    - [Tools and Libraries](#tools-and-libraries-1)
+4. [Data Preparation for RNN Models](#data-preparation-for-rnn-models)
+   - [Steps for Data Preparation](#steps-for-data-preparation)
+   - [Data Conversion Example](#data-conversion-example)
+5. [Hyperparameter Tuning in Node.js](#hyperparameter-tuning-in-nodejs)
+   - [Techniques for Hyperparameter Tuning](#techniques-for-hyperparameter-tuning)
+   - [Grid Search Example](#grid-search-example)
+   - [Random Search Example](#random-search-example)
+
+---
 
 ## Recommended Models: RNN or LSTM
 
