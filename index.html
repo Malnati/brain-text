@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Word-by-Word Paragraph</title>
+  <style>
+    body {
+      display: flex;
+      flex-direction: column;
+      height: 100vh;
+      justify-content: center;
+      align-items: center;
+      background-image: linear-gradient(
+          rgba(16, 16, 16, 0.8),
+          rgba(16, 16, 16, 0.8)
+        );
+    }
+    p {
+      margin: 0em 5em 4em 5em;
+    }
+    h1, p {
+      text-align: left;
+      line-height: 1.8;
+      font-family: Lora, serif;
+    }
+    .glowIn {
+      color: white;
+      font-size: calc(100vh / 5);
+    }
+    .glowIn span {
+      animation: glow-in 1.5s both;
+      animation-delay: 0s;
+    }
+    #instruction {
+      color: white;
+      font-size: calc(100vh / 10);
+    }
+    @keyframes glow-in {
+      from {
+        opacity: 0;
+      }
+      65% {
+        opacity: 1;
+        text-shadow: 0 0 25px white;
+      }
+      75% {
+        opacity: 1;
+      }
+      to {
+        opacity: 0.7;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div id="instruction">Press any key to start displaying words.</div>
+  <div id="output" class="glowIn"></div>
+
+  <script>
+    const paragraph = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Mattis pellentesque id nibh tortor. Suspendisse ultrices gravida dictum fusce ut placerat orci nulla. A lacus vestibulum sed arcu.";
+    const words = paragraph.split(" ").map(word => word.replace(/[.,!?;"]/g, ""));
+    let index = 0;
+
+    function displayWord() {
+      if (index < words.length) {
+        let output = document.getElementById("output");
+        output.innerHTML = "";
+        let word = words[index];
+        for (let i = 0; i < word.length; i++) {
+          let span = document.createElement("span");
+          span.textContent = word[i];
+          span.style.animationDelay = `${i * 0.3}s`;
+          output.append(span);
+        }
+        index++;
+      }
+    }
+
+    document.addEventListener("keydown", function(event) {
+      document.getElementById("instruction").style.display = "none";
+      displayWord();
+    });
+  </script>
+
+</body>
+</html>
