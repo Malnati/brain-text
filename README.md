@@ -1,6 +1,6 @@
----
-
 # brain-text
+
+![Brain](text-training-about-background.png)
 
 ## Overview
 This repository contains a project aimed at transcribing brain waves into text. It utilizes the Neurosity SDK's concepts of Kinesis and Predictions for this purpose.
