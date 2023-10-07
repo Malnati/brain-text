@@ -10,11 +10,11 @@ This page contains a Dockerfile for setting up an environment to train a LongT5 
 - **Model Choice**: LongT5 is chosen for its ability to handle long sequences, suitable for brainwave data.
 - **T5X**: Provides a flexible and extensible framework for training and evaluating T5 models.
 
-**Docker Hub Repository**: [malnati/t5x-brainwaves](https://hub.docker.com/repository/docker/malnati/t5x-brainwaves/general)
-
 ## Installation
 
 ### Using Docker
+
+**Docker Hub Repository**: [malnati/t5x-brainwaves](https://hub.docker.com/repository/docker/malnati/t5x-brainwaves/general)
 
 1. Clone this repository.
 2. Navigate to the directory containing the [Dockerfile](Dockerfile) and the [requirements.txt](requirements.txt).
