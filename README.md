@@ -14,6 +14,7 @@ This repository contains a project aimed at transcribing brain waves into text. 
 - [Machine Learning](#machine-learning)
 - [Text Generation from Thinking](#text-generation-from-thinking)
 - [Additional Documentation](#additional-documentation)
+- [T5X Brainwave Model Training with Docker](t5x.md)
 
 ---
 
