@@ -15,7 +15,7 @@ This page contains a Dockerfile for setting up an environment to train a LongT5 
 ### Using Docker
 
 1. Clone this repository.
-2. Navigate to the directory containing the Dockerfile.
+2. Navigate to the directory containing the [Dockerfile](Dockerfile) and the [requirements.txt](requirements.txt).
 3. Build the Docker image:  
    ```
    docker build -t malnati/t5x-brainwaves .
