@@ -1,6 +1,8 @@
 # brain-text
 
-![Brain](text-training-about-background.png)
+<div align="center">
+  <img src="text-training-about-background.png" alt="Brain" width="200"/>
+</div>
 
 ## Overview
 This repository contains a project aimed at transcribing brain waves into text. It utilizes the Neurosity SDK's concepts of Kinesis and Predictions for this purpose.
