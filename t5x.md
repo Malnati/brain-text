@@ -2,7 +2,7 @@
 
 ## Overview
 
-This repository contains a Dockerfile for setting up an environment to train a LongT5 model on brainwave data stored in JSON files. The LongT5 model architecture was chosen for its effectiveness in handling long sequences, which is crucial for brainwave data.
+This page contains a Dockerfile for setting up an environment to train a LongT5 model on brainwave data stored in JSON files. The LongT5 model architecture was chosen for its effectiveness in handling long sequences, which is crucial for brainwave data.
 
 ## Motivation
 
