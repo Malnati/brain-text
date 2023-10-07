@@ -24,15 +24,32 @@ This page contains a Dockerfile for setting up an environment to train a LongT5 
    ```
    docker run -it malnati/t5x-brainwaves
    ```
-
+   
 ### Local Installation
 
 1. Clone this repository.
-2. Install the required Python packages:  
+2. Install the required system packages:
+   ```bash
+   sudo apt-get update
+   sudo apt-get install -y curl build-essential libssl-dev libffi-dev python3-dev
    ```
+3. Install Google Cloud SDK:
+   ```bash
+   curl -sSL https://sdk.cloud.google.com | bash
+   ```
+   Add Google Cloud SDK to your path:
+   ```bash
+   export PATH=$PATH:~/google-cloud-sdk/bin
+   ```
+4. Install gsutil:
+   ```bash
+   gcloud components install gsutil
+   ```
+5. Install the required Python packages:  
+   ```bash
    pip install -r requirements.txt
    ```
-3. Follow the T5X guidelines to set up your training environment.
+
 
 ## Steps to Follow
 
