@@ -13,19 +13,15 @@ This guide aims to help you set up a Docker development environment for your Nod
 ## Step 1: Initialize Docker Dev Environment
 
 1. **Open your terminal and navigate to your project directory.**
-
     ```bash
     cd path/to/your/project
     ```
 
 2. **Create a Dockerfile for your development environment.**
-
     ```bash
     touch Dockerfile-DevEnvironment
     ```
-
     Open the Dockerfile-DevEnvironment in a text editor and add the following content:
-
     ```Dockerfile
     # Use an official Node runtime as base image
     FROM node:14
@@ -42,13 +38,10 @@ This guide aims to help you set up a Docker development environment for your Nod
     ```
 
 3. **Create a `docker-compose.yaml` file.**
-
     ```bash
     touch docker-compose.yaml
     ```
-
     Open the `docker-compose.yaml` in a text editor and add the following content:
-
     ```yaml
     version: "3.7"
     services:
@@ -65,15 +58,12 @@ This guide aims to help you set up a Docker development environment for your Nod
 ## Step 2: Launch VSCode Dev Environment
 
 1. **Open Docker Desktop.**
-
     Navigate to the Dev Environments tab.
 
 2. **Create a New Dev Environment.**
-
     Click on the "New Environment" button and select your project directory where the `docker-compose.yaml` and `Dockerfile-DevEnvironment` are located.
 
 3. **Launch VSCode.**
-
     Once the environment is created, click on the "Open in VSCode" button. This will launch Visual Studio Code with the remote container extension, connecting it to your Docker container.
 
 ---
@@ -81,13 +71,10 @@ This guide aims to help you set up a Docker development environment for your Nod
 ## Step 3: Install Dependencies Inside Docker Container
 
 1. **Open Terminal in VSCode.**
-
     Once VSCode is connected to your Docker container, open a new terminal window inside VSCode. This terminal will be running inside your Docker container.
 
 2. **Install Dependencies.**
-
     Run the following command to install the dependencies specified in your `package.json`:
-
     ```bash
     npm install
     ```
@@ -121,19 +108,16 @@ root@01b443cf3002:/com.docker.devenvironments.code#
 ### Procedure
 
 1. Log in to your Docker Hub account.
-
     ```bash
     docker login
     ```
 
 2. Tag your Docker image.
-
     ```bash
     docker tag local-image-name:tagname new-repo-name:tagname
     ```
 
 3. Push the Docker image to your Docker Hub repository.
-
     ```bash
     docker push new-repo-name:tagname
     ```
@@ -150,7 +134,6 @@ The push refers to repository [docker.io/new-repo-name/tagname]
 ## Step 5: Build Neurosity NodeJS App
 
 1. **Follow the Neurosity Tutorial.**
-
     At this point, you can proceed to follow the steps in the Neurosity tutorial to build your NodeJS app. Since you are working within a Docker container, all dependencies and files will be isolated from your local environment.
 
 ---
@@ -158,9 +141,10 @@ The push refers to repository [docker.io/new-repo-name/tagname]
 ## Step 6: Share Dev Environment
 
 1. **Generate Shareable Link.**
-
-    Go back to Docker Desktop and navigate to the Dev Environments tab. Select your environment and click on the "Share" button. This will generate a shareable link similar to `https://open.docker.com/dashboard/dev-envs?url=https://`.
+    If the "Share" button is not available in Docker Desktop, you can create a manual link:
+    ```bash
+    https://open.docker.com/dashboard/dev-envs?url=https://github.com/Malnati/brain-text
+    ```
 
 2. **Update GitHub Repository.**
-
     Add this shareable link to your GitHub repository, specifically in the `docker-environment.md`, to allow others to easily access and set up the same development environment.
