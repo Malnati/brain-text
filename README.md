@@ -18,6 +18,15 @@ This repository contains a project aimed at transcribing brain waves into text. 
 
 ---
 
+### For developers
+
+You will need a personal access token generated from GitHub. You can create one by going to GitHub Settings > Developer settings > Personal access tokens.
+
+After created your personal access token generated from GitHub, you can start the development for accessing the Docker Development Environment by the link below.
+https://open.docker.com/dashboard/dev-envs?url=https://github.com/Malnati/brain-text
+
+---
+
 ### Kinesis for Gesture Recognition
 - [Start Parsing](#start-parsing): Use a pre-defined gesture to initiate the brainwave parsing process.
 
