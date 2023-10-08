@@ -148,3 +148,75 @@ The push refers to repository [docker.io/new-repo-name/tagname]
 
 2. **Update GitHub Repository.**
     Add this shareable link to your GitHub repository, specifically in the `docker-environment.md`, to allow others to easily access and set up the same development environment.
+
+
+---
+
+# IMPORTANT NOTES
+
+## Next Steps: Security Considerations
+
+> **Note**: Before proceeding to the Neurosity tutorial, it's crucial to familiarize yourself with best practices for securing your Docker Hub and GitHub repositories, especially when working in a team environment. This includes understanding how to handle credentials and private information securely. Mismanagement of sensitive data can expose your project to vulnerabilities. Learning about secure ways to manage credentials and private information in your repositories should be your next step.
+
+## Securely Handling Git Credentials in Docker Development Container
+
+When working in a Docker Development container, it's crucial to ensure that your Git credentials are securely managed to prevent any sensitive information from leaking. Below are some best practices:
+
+### Using Environment Variables
+
+1. **Set Environment Variables in Docker Compose**
+
+    In your `docker-compose.yaml`, you can set environment variables that will be available inside the Docker container.
+
+    ```yaml
+    services:
+      app:
+        environment:
+          - GIT_USERNAME=<your_username>
+          - GIT_PASSWORD=<your_password>
+    ```
+
+    > **Note**: Never commit sensitive information like passwords or API keys in your `docker-compose.yaml`. Use `.env` files or Docker secrets for that.
+
+### Using Docker Secrets (Recommended for Swarm)
+
+If you are using Docker in Swarm mode, you can use Docker secrets to securely transmit and store sensitive information.
+
+1. **Create a Docker Secret**
+
+    ```bash
+    echo "<your_git_token>" | docker secret create git_token -
+    ```
+
+2. **Reference the Secret in Docker Compose**
+
+    In your `docker-compose.yaml`:
+
+    ```yaml
+    services:
+      app:
+        secrets:
+          - git_token
+    ```
+
+### Using SSH Keys
+
+1. **Mount Your SSH Key as a Volume**
+
+    You can mount your SSH key into the Docker container to avoid copying it, which could expose it to risks.
+
+    ```yaml
+    services:
+      app:
+        volumes:
+          - ~/.ssh:/root/.ssh:ro
+    ```
+
+    This will mount your SSH key as read-only inside the container.
+
+### Important Reminders
+
+- Always use HTTPS or SSH URLs for Git repositories to ensure encryption.
+- Regularly rotate your credentials and SSH keys.
+- If you're using public repositories, make sure not to push any code that contains sensitive information.
+
