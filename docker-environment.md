@@ -160,19 +160,19 @@ The push refers to repository [docker.io/new-repo-name/tagname]
 
 ## Git Credentials in Docker Development Container
 
-    To securely handle Git credentials in your Docker development container, you can use SSH keys or token-based authentication. If you're using SSH keys, you can mount them as shown above. For token-based authentication, you can use environment variables or Docker secrets.
+To securely handle Git credentials in your Docker development container, you can use SSH keys or token-based authentication. If you're using SSH keys, you can mount them as shown above. For token-based authentication, you can use environment variables or Docker secrets.
 
 ### Advantages of Mounting SSH Key
 
-    1. Security: SSH keys are more secure than passwords.
-    1. Ease of Use: Once set up, you don't have to enter credentials for each Git operation.
-    1. MFA Bypass: If you have Multi-Factor Authentication (MFA) enabled for GitHub, SSH keys allow you to bypass MFA during Git operations.
+1. Security: SSH keys are more secure than passwords.
+1. Ease of Use: Once set up, you don't have to enter credentials for each Git operation.
+1. MFA Bypass: If you have Multi-Factor Authentication (MFA) enabled for GitHub, SSH keys allow you to bypass MFA during Git operations.
 
 ### Using SSH Keys
 
-    **Mount Your SSH Key as a Volume**
+**Mount Your SSH Key as a Volume**
 
-    You can mount your SSH key into the Docker container to avoid copying it, which could expose it to risks.
+You can mount your SSH key into the Docker container to avoid copying it, which could expose it to risks.
 
     ```yaml
     services:
@@ -181,11 +181,11 @@ The push refers to repository [docker.io/new-repo-name/tagname]
           - ~/.ssh:/root/.ssh:ro
     ```
 
-    This will mount your SSH key as read-only inside the container.
+This will mount your SSH key as read-only inside the container.
 
 ### Important Reminders
 
-    - Always use HTTPS or SSH URLs for Git repositories to ensure encryption.
-    - Regularly rotate your credentials and SSH keys.
-    - If you're using public repositories, make sure not to push any code that contains sensitive information.
+- Always use HTTPS or SSH URLs for Git repositories to ensure encryption.
+- Regularly rotate your credentials and SSH keys.
+- If you're using public repositories, make sure not to push any code that contains sensitive information.
 
