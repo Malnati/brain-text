@@ -151,6 +151,53 @@ The push refers to repository [docker.io/new-repo-name/tagname]
 2. **Update GitHub Repository.**
     Add this shareable link to your GitHub repository, specifically in the `docker-environment.md`, to allow others to easily access and set up the same development environment.
 
+---
+
+## Step 7: Setting Up Git Credentials Locally
+
+### Using Personal Access Tokens
+
+1. **Generate a Personal Access Token on GitHub.**
+    - Go to GitHub > Settings > Developer settings > Personal access tokens > Generate new token.
+    - Select the scopes you require and generate the token.
+
+2. **Apply Token to Local Environment.**
+    ```bash
+    git config --global credential.helper store
+    git fetch
+    ```
+    When prompted, use the token as your password.
+
+### Using SSH Keys
+
+1. **Generate SSH Key.**
+    ```bash
+    ssh-keygen -t rsa -b 4096 -C "your_email@example.com"
+    ```
+
+2. **Add SSH Key to GitHub.**
+    - Copy the SSH key to your clipboard.
+    ```bash
+    pbcopy < ~/.ssh/id_rsa.pub
+    ```
+    - Go to GitHub > Settings > SSH and GPG keys > New SSH key. Paste your key and save.
+
+3. **Apply SSH Key to Local Environment.**
+    ```bash
+    ssh-add ~/.ssh/id_rsa
+    ```
+
+---
+
+## Step 8: Handling Dubious Ownership in Git Repository
+
+If you encounter an error related to dubious ownership in your Git repository within the Docker container, you can add an exception for the directory.
+
+```bash
+git config --global --add safe.directory /com.docker.devenvironments.code
+```
+
+> **Caution**: This tells Git to treat this directory as safe. Make sure you understand the security implications, especially if you're working in a team or on a shared machine.
 
 ---
 
