@@ -1,3 +1,6 @@
+Certainly, Ricardo. Below is the revised content for your `docker-environment.md`:
+
+```markdown
 # Docker Development Environment Setup
 
 ## Introduction
@@ -11,7 +14,6 @@ This guide aims to help you set up a Docker development environment for your Nod
 - Git installed
 
 ## Step 1: Initialize Docker Dev Environment
-
 
 1. **Open your terminal and navigate to your project directory.**
 
@@ -61,54 +63,6 @@ This guide aims to help you set up a Docker development environment for your Nod
           - "3000:3000"
     ```
 
-4. **Create a `package.json` file.**
-
-    ```bash
-    touch package.json
-    ```
-
-    Open the `package.json` in a text editor and add the following content:
-
-    ```json
-    {
-      "name": "your-app-name",
-      "version": "1.0.0",
-      "main": "index.js",
-      "scripts": {
-        "start": "node index.js"
-      }
-    }
-    ```
-
-5. **Create an `index.js` file.**
-
-    ```bash
-    touch index.js
-    ```
-
-    Open the `index.js` in a text editor and add the following content:
-
-    ```javascript
-    console.log("Hello, world!");
-    ```
-
-6. **Build and Run the Docker Container.**
-
-    ```bash
-    docker-compose up --build
-    ```
-
-    If everything is set up correctly, you should see the output "Hello, world!" in your terminal.
-   
-1. Open your terminal and navigate to your project directory.
-2. Run the following command to initialize a new Docker Dev Environment:
-
-    ```bash
-    docker dev env create
-    ```
-
-> **Note**: This will create a `compose-dev.yaml` file in your project directory.
-
 ---
 
 ## Step 2: Launch VSCode Dev Environment
@@ -141,7 +95,7 @@ This guide aims to help you set up a Docker development environment for your Nod
     npm install
     ```
 
-### Step 3.1: Install Dependencies Inside Docker Container (Example Output)
+### Example Output After Installing Dependencies
 
 After running the `npm install` command in the terminal within VSCode, you may see the following output:
 
@@ -157,49 +111,46 @@ found 0 vulnerabilities
 root@01b443cf3002:/com.docker.devenvironments.code#
 ```
 
-### Notes:
+---
 
-- **Lockfile Created**: A `package-lock.json` file is created. It's advisable to commit this file to your repository.
-- **Warnings**: You may see warnings about missing repository and license fields in your `package.json`. These are optional but recommended for a complete package configuration.
-
-The page for your Docker Hub repository "malnati/t5x-brainwaves" provides an overview of the Dockerized environment you've set up for running and training the LongT5 model on brainwave data. The LongT5 model is part of the T5X library, designed for various natural language processing tasks. Your specific implementation aims to train the model on JSON-formatted brainwave data along with associated text content. The page also includes a Docker Pull Command for users to pull the image.
-
-### Advantages of Uploading to Docker Hub
-1. **Version Control**: You can tag different versions of your Docker image, making it easier to roll back to previous versions if needed.
-2. **Accessibility**: Others can easily pull your Docker image and run containers based on it, facilitating collaboration.
-3. **Automated Builds**: Docker Hub can automatically build your Docker image whenever you push changes to a linked GitHub repository.
-
-### Markdown Content for docker-environment.md
-```markdown
-## Step 3.2: Publish Docker Image to Docker Hub (Optional)
+## Step 4: Publish Docker Image to Docker Hub (Optional)
 
 ### Advantages
+
 - Version control for your Docker images.
 - Easy accessibility for collaboration.
 - Automated builds linked to your GitHub repository.
 
 ### Procedure
+
 1. Log in to your Docker Hub account.
-   ```
-   docker login
-   ```
+
+    ```bash
+    docker login
+    ```
+
 2. Tag your Docker image.
-   ```
-   docker tag local-image-name:tagname new-repo-name:tagname
-   ```
+
+    ```bash
+    docker tag local-image-name:tagname new-repo-name:tagname
+    ```
+
 3. Push the Docker image to your Docker Hub repository.
-   ```
-   docker push new-repo-name:tagname
-   ```
+
+    ```bash
+    docker push new-repo-name:tagname
+    ```
+
 Example output after pushing the image:
-```
+
+```bash
 The push refers to repository [docker.io/new-repo-name/tagname]
 ...
 ```
-```
 
 ---
-## Step 4: Build Neurosity NodeJS App
+
+## Step 5: Build Neurosity NodeJS App
 
 1. **Follow the Neurosity Tutorial.**
 
@@ -207,7 +158,7 @@ The push refers to repository [docker.io/new-repo-name/tagname]
 
 ---
 
-## Step 5: Share Dev Environment
+## Step 6: Share Dev Environment
 
 1. **Generate Shareable Link.**
 
@@ -215,4 +166,7 @@ The push refers to repository [docker.io/new-repo-name/tagname]
 
 2. **Update GitHub Repository.**
 
-    Add this shareable link to your GitHub repository, specifically in the README or "docker-environment.md", to allow others to easily access and set up the same development environment.
+    Add this shareable link to your GitHub repository, specifically in the `docker-environment.md`, to allow others to easily access and set up the same development environment.
+```
+
+Feel free to update your GitHub repository with this revised content.
