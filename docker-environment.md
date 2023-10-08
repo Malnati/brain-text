@@ -174,12 +174,12 @@ To securely handle Git credentials in your Docker development container, you can
 
 You can mount your SSH key into the Docker container to avoid copying it, which could expose it to risks.
 
-    ```yaml
-    services:
-      app:
-        volumes:
-          - ~/.ssh:/root/.ssh:ro
-    ```
+```yaml
+services:
+    app:
+    volumes:
+        - ~/.ssh:/root/.ssh:ro
+```
 
 This will mount your SSH key as read-only inside the container.
 
