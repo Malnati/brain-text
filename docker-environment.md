@@ -51,6 +51,8 @@ This guide aims to help you set up a Docker development environment for your Nod
           dockerfile: Dockerfile-DevEnvironment
         ports:
           - "3000:3000"
+        volumes:
+            - ~/.ssh/id_rsa:/root/.ssh/id_rsa:ro
     ```
 
 ---
@@ -152,56 +154,23 @@ The push refers to repository [docker.io/new-repo-name/tagname]
 
 ---
 
-# IMPORTANT NOTES
-
-## Next Steps: Security Considerations
+# Security Considerations for GitHub and Docker Hub
 
 > **Note**: Before proceeding to the Neurosity tutorial, it's crucial to familiarize yourself with best practices for securing your Docker Hub and GitHub repositories, especially when working in a team environment. This includes understanding how to handle credentials and private information securely. Mismanagement of sensitive data can expose your project to vulnerabilities. Learning about secure ways to manage credentials and private information in your repositories should be your next step.
 
-## Securely Handling Git Credentials in Docker Development Container
+## Git Credentials in Docker Development Container
 
-When working in a Docker Development container, it's crucial to ensure that your Git credentials are securely managed to prevent any sensitive information from leaking. Below are some best practices:
+    To securely handle Git credentials in your Docker development container, you can use SSH keys or token-based authentication. If you're using SSH keys, you can mount them as shown above. For token-based authentication, you can use environment variables or Docker secrets.
 
-### Using Environment Variables
+### Advantages of Mounting SSH Key
 
-1. **Set Environment Variables in Docker Compose**
-
-    In your `docker-compose.yaml`, you can set environment variables that will be available inside the Docker container.
-
-    ```yaml
-    services:
-      app:
-        environment:
-          - GIT_USERNAME=<your_username>
-          - GIT_PASSWORD=<your_password>
-    ```
-
-    > **Note**: Never commit sensitive information like passwords or API keys in your `docker-compose.yaml`. Use `.env` files or Docker secrets for that.
-
-### Using Docker Secrets (Recommended for Swarm)
-
-If you are using Docker in Swarm mode, you can use Docker secrets to securely transmit and store sensitive information.
-
-1. **Create a Docker Secret**
-
-    ```bash
-    echo "<your_git_token>" | docker secret create git_token -
-    ```
-
-2. **Reference the Secret in Docker Compose**
-
-    In your `docker-compose.yaml`:
-
-    ```yaml
-    services:
-      app:
-        secrets:
-          - git_token
-    ```
+    1. Security: SSH keys are more secure than passwords.
+    1. Ease of Use: Once set up, you don't have to enter credentials for each Git operation.
+    1. MFA Bypass: If you have Multi-Factor Authentication (MFA) enabled for GitHub, SSH keys allow you to bypass MFA during Git operations.
 
 ### Using SSH Keys
 
-1. **Mount Your SSH Key as a Volume**
+    **Mount Your SSH Key as a Volume**
 
     You can mount your SSH key into the Docker container to avoid copying it, which could expose it to risks.
 
@@ -216,7 +185,7 @@ If you are using Docker in Swarm mode, you can use Docker secrets to securely tr
 
 ### Important Reminders
 
-- Always use HTTPS or SSH URLs for Git repositories to ensure encryption.
-- Regularly rotate your credentials and SSH keys.
-- If you're using public repositories, make sure not to push any code that contains sensitive information.
+    - Always use HTTPS or SSH URLs for Git repositories to ensure encryption.
+    - Regularly rotate your credentials and SSH keys.
+    - If you're using public repositories, make sure not to push any code that contains sensitive information.
 
