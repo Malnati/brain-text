@@ -162,8 +162,43 @@ root@01b443cf3002:/com.docker.devenvironments.code#
 - **Lockfile Created**: A `package-lock.json` file is created. It's advisable to commit this file to your repository.
 - **Warnings**: You may see warnings about missing repository and license fields in your `package.json`. These are optional but recommended for a complete package configuration.
 
----
+The page for your Docker Hub repository "malnati/t5x-brainwaves" provides an overview of the Dockerized environment you've set up for running and training the LongT5 model on brainwave data. The LongT5 model is part of the T5X library, designed for various natural language processing tasks. Your specific implementation aims to train the model on JSON-formatted brainwave data along with associated text content. The page also includes a Docker Pull Command for users to pull the image.
 
+### Advantages of Uploading to Docker Hub
+1. **Version Control**: You can tag different versions of your Docker image, making it easier to roll back to previous versions if needed.
+2. **Accessibility**: Others can easily pull your Docker image and run containers based on it, facilitating collaboration.
+3. **Automated Builds**: Docker Hub can automatically build your Docker image whenever you push changes to a linked GitHub repository.
+
+### Markdown Content for docker-environment.md
+```markdown
+## Step 3.2: Publish Docker Image to Docker Hub (Optional)
+
+### Advantages
+- Version control for your Docker images.
+- Easy accessibility for collaboration.
+- Automated builds linked to your GitHub repository.
+
+### Procedure
+1. Log in to your Docker Hub account.
+   ```
+   docker login
+   ```
+2. Tag your Docker image.
+   ```
+   docker tag local-image-name:tagname new-repo-name:tagname
+   ```
+3. Push the Docker image to your Docker Hub repository.
+   ```
+   docker push new-repo-name:tagname
+   ```
+Example output after pushing the image:
+```
+The push refers to repository [docker.io/new-repo-name/tagname]
+...
+```
+```
+
+---
 ## Step 4: Build Neurosity NodeJS App
 
 1. **Follow the Neurosity Tutorial.**
