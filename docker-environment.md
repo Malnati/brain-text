@@ -1,6 +1,3 @@
-Certainly, Ricardo. Below is the revised content for your `docker-environment.md`:
-
-```markdown
 # Docker Development Environment Setup
 
 ## Introduction
@@ -167,6 +164,3 @@ The push refers to repository [docker.io/new-repo-name/tagname]
 2. **Update GitHub Repository.**
 
     Add this shareable link to your GitHub repository, specifically in the `docker-environment.md`, to allow others to easily access and set up the same development environment.
-```
-
-Feel free to update your GitHub repository with this revised content.
